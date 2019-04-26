@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import CharacterList from './components/CharacterList';
+
 import './App.css';
 
 class App extends Component {
@@ -6,6 +8,8 @@ class App extends Component {
     super();
     this.state = {
       starwarsChars: [],
+      previousUrl: null,
+      nextUrl: null,
     };
   }
 
@@ -22,7 +26,12 @@ class App extends Component {
         return res.json();
       })
       .then(data => {
-        this.setState({ starwarsChars: data.results });
+        console.log(data);
+        this.setState({
+          starwarsChars: data.results,
+          previousUrl: data.previous,
+          nextUrl: data.next,
+        });
       })
       .catch(err => {
         throw new Error(err);
@@ -33,6 +42,24 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className="App__Header">React Wars</h1>
+        <CharacterList chars={this.state.starwarsChars} />
+
+        {this.state.previousUrl && (
+          <button
+            onClick={() => this.getCharacters(this.state.previousUrl)}
+            className="prev"
+          >
+            &larr; Previous
+          </button>
+        )}
+        {this.state.nextUrl && (
+          <button
+            onClick={() => this.getCharacters(this.state.nextUrl)}
+            className="next"
+          >
+            Next &rarr;
+          </button>
+        )}
       </div>
     );
   }
