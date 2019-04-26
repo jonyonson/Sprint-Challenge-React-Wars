@@ -1,32 +1,27 @@
 .App {
   margin: 0 auto;
-  min-height: 500px;
-  /* border: 2px solid; */
+  height: 670px;
   width: 400px;
   max-width: 90%;
   padding: 30px;
-  padding-bottom: 70px;
   border-radius: 5px;
   background: rgba(255,255,255,.7);
   color: #443e3e;
   position: relative;
+  transition: all .2s ease;
 }
 
 .App__Header {
-  /* text-align: center; */
   margin: 0 0 10px;
   color: #443e3e;
   margin-bottom: 30px;
-  /* text-shadow: 1px 1px 5px #fff; */
 }
 
 .App__char-list {
   padding: 0;
   margin: 0;
-  /* text-align: center; */
   list-style-type: none;
   font-size: 24px;
-  /* width: auto; */
 }
 
 .App__char-list__item {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CharacterList from './components/CharacterList';
-
+import Spinner from './components/Spinner/Spinner';
 import './App.css';
 
 class App extends Component {
@@ -39,11 +39,15 @@ class App extends Component {
   };
 
   render() {
-    return (
+    return this.state.starwarsChars.length === 0 ? (
+      <div className="App">
+        <h1 className="App__Header">React Wars</h1>
+        <h1>Loading</h1>
+      </div>
+    ) : (
       <div className="App">
         <h1 className="App__Header">React Wars</h1>
         <CharacterList chars={this.state.starwarsChars} />
-
         {this.state.previousUrl && (
           <button
             onClick={() => this.getCharacters(this.state.previousUrl)}
