@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CharacterList from './components/CharacterList';
-import Spinner from './components/Spinner/Spinner';
 import './App.css';
 
 class App extends Component {
@@ -26,7 +25,7 @@ class App extends Component {
         return res.json();
       })
       .then(data => {
-        console.log(data);
+        // console.log(data);
         this.setState({
           starwarsChars: data.results,
           previousUrl: data.previous,
